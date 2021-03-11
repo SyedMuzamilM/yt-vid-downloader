@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><% title %> | smvid</title>
+
+    <!-- <link rel="stylesheet" href="/static/stylesheets/style.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css"
+        integrity="sha512-wl80ucxCRpLkfaCnbM88y4AxnutbGk327762eM9E/rRTvY/ZGAHWMZrYUq66VQBYMIYDFpDdJAOGSLyIPHZ2IQ=="
+        crossorigin="anonymous" />
+</head>
+
+<body>
+    <main class="min-h-screen flex items-center px-6 lg:px-32 bg-purple-700 text-white relative">
+
+        <header class="w-full absolute left-0 top-0 p-6 lg:p-32">
+            <div class="flex justify-between">
+                <div>
+                    <a href="/">
+                        <h1 class="text-3xl font-bold text-red-600">{smvid}</h1>
+                    </a>
+                    <span>Download the videos you want...</span>
+                </div>
+
+                <div>
+                    <ul class="flex">
+                        <li class="ml-24">
+                            <a href="/download">
+                                <div class="flex items-center justify-end">
+                                    <div class="w-10 border-b border-solid border-white"></div>
+                                    <h1 class="ml-3 text-3xl font-bold">1</h1>
+                                </div>
+                                <div class="text-right">Download</div>
+                            </a>
+                        </li>
+                        <li class="ml-24">
+                            <a href="/about-us">
+                                <div class="flex items-center justify-end">
+                                    <div class="w-10 border-b border-solid border-white"></div>
+                                    <h1 class="ml-3 text-3xl font-bold">2</h1>
+                                </div>
+                                <div class="text-right">About</div>
+                            </a>
+                        </li>
+                        <li class="ml-24">
+                            <a href="/contact-us">
+                                <div class="flex items-center justify-end">
+                                    <div class="w-10 border-b border-solid border-white"></div>
+                                    <h1 class="ml-3 text-3xl font-bold">3</h1>
+                                </div>
+                                <div class="text-right">Contact Us</div>
+                            </a>
+                        </li>
+
+                        <li class="ml-24">
+                            <a href="/how-to-use">
+                                <div class="flex items-center justify-end">
+                                    <div class="w-10 border-b border-solid border-white"></div>
+                                    <h1 class="ml-3 text-3xl font-bold">4</h1>
+                                </div>
+                                <div class="text-right">How to Use</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
