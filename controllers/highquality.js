@@ -59,6 +59,9 @@ const highqualityController = async (req, res) => {
         readline.moveCursor(process.stdout, 0, -3);
       };
       
+      // Create the output name of the file downloading
+      let output = `${title}-${Date.now()}-smvid.mp4`
+
       // Start the ffmpeg child process
       const ffmpegProcess = cp.spawn(ffmpeg, [
         // Remove ffmpeg's console spamming
@@ -75,7 +78,7 @@ const highqualityController = async (req, res) => {
         '-c:v', 'copy',
         // Define output file
         // `${process.cwd()}/output/${title}.mkv`,
-        title + '.mp4'
+        output
       ], {
         windowsHide: true,
         stdio: [
@@ -91,10 +94,10 @@ const highqualityController = async (req, res) => {
         process.stdout.write('\n\n\n\n');
         clearInterval(progressbarHandle);
   
-        res.download(title + '.mp4', (err) => {
+        res.download(output, (err) => {
           if (err) throw err
 
-          fs.unlinkSync(title + '.mp4')
+          fs.unlinkSync(output)
         })
       });
       
