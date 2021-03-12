@@ -19,7 +19,7 @@ exports.download_video = async (req, res) => {
      const q = req.query.q
      const quality = parseInt(q)
     
-     const into = await ytdl.getInfo(ref)
+     const info = await ytdl.getInfo(ref)
      const title = info.player_response.videoDetails.title
 
 
