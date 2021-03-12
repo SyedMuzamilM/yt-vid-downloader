@@ -18,20 +18,15 @@ exports.download_video = async (req, res) => {
      const ref = req.query.URL
      const q = req.query.q
      const quality = parseInt(q)
-     const extension = req.query.ext
+    
+     const into = await ytdl.getInfo(ref)
+     const title = info.player_response.videoDetails.title
 
-     console.log({
-         URL: ref,
-         quality: q,
-         extension: extension
-     });
 
+     console.log(title)
  
      if (quality === 137 || quality === 400 || quality === 401) {
        
-       const info = await ytdl.getInfo(ref)
-       const title = info.player_response.videoDetails.title
-        
        // console.log(title)
        // res.send(info)
        const tracker = {
@@ -72,7 +67,7 @@ exports.download_video = async (req, res) => {
        };
        
        // Create the output name of the file downloading
-       let output = `${title}-${Date.now()}-smvid.${extension}`
+       let output = `${title}-${Date.now()}-smvid.mp4`
  
        // Start the ffmpeg child process
        const ffmpegProcess = cp.spawn(ffmpeg, [
