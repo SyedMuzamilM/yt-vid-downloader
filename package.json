@@ -7,14 +7,10 @@
     "devStart": "nodemon app.js"
   },
   "dependencies": {
-    "body-parser": "~1.13.2",
-    "cookie-parser": "~1.3.5",
     "cors": "^2.8.5",
     "express": "~4.13.1",
     "ffmpeg-static": "^4.2.7",
-    "fluent-ffmpeg": "^2.1.2",
-    "socket.io": "^4.0.0",
-    "socket.io-client": "^4.0.0",
     "ytdl-core": "^4.5.0"
-  }
+  },
+  "license": "MIT"
 }

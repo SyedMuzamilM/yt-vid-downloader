@@ -1,7 +1,5 @@
 const express = require('express');
 const path = require('path');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
 const cors = require('cors')
 
 const app = express();
@@ -18,10 +16,6 @@ app.use(cors())
 const users = require('./routes/users');
 const indexRouter = require('./routes/index')
 
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser())
 
 /**
  * User the routes on the specific endpoints
