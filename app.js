@@ -13,15 +13,16 @@ app.use(cors())
 /**
  * Import the routes
  */
-const users = require('./routes/users');
 const indexRouter = require('./routes/index')
+const downloadRouter = require('./routes/download')
 
 
 /**
  * User the routes on the specific endpoints
  */
 app.use('', indexRouter)
-app.use('/api/v1/users', users);
+app.use('/download', downloadRouter);
+
 
 
 /**
