@@ -1,5 +1,6 @@
 const URLInput = document.querySelector("#URL-input")
 const quality = document.querySelector("#quality")
+const extension = document.querySelector("#extension")
 const submitBtn = document.querySelector(".submit")
 
 function getSelectedOption(quality) {
@@ -14,17 +15,27 @@ function getSelectedOption(quality) {
   return opt
 }
 
-submitBtn.addEventListener('click', () => {
-    const URLValue = URLInput.value
-    const opt = getSelectedOption(quality);
-   
-    console.log(URLValue)
-    console.log("option value: ", opt.value)
-    // console.log(typeof(opt.value), typeof(Number(opt.value)))
+function getSelectedExtension(extension) {
+  let opt;
+  for (let i = 0, len = extension.options.length; i < len; i++) {
+    opt = extension.options[i]
 
-    send(URLValue, Number(opt.value))
+    if (opt.selected === true) {
+      break
+    }
+  }
+  return opt
+}
+
+submitBtn.addEventListener('click', () => {
+    const URLValue = URLInput.value;
+    const opt = getSelectedOption(quality);
+    const ext = getSelectedExtension(extension);
+   
+
+    send(URLValue, opt.value, ext.value)
 })
 
-function send(URL, quality) {
-  window.location.href = `/download/video?URL=${URL}&q=${quality}`
+function send(URL, quality, extension) {
+  window.location.href = `/download/video?URL=${URL}&q=${quality}&ext=${extension}`
 }
