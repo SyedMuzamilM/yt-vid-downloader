@@ -1,5 +1,5 @@
 const readline = require('readline');
-const ffmpeg = require('fluent-ffmpeg');
+const ffmpeg = require('ffmpeg-static');
 const ytdl = require('ytdl-core');
 
 const mp4tomp3 = async (req, res) => {

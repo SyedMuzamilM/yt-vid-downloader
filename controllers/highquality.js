@@ -12,13 +12,16 @@ const highqualityController = async (req, res) => {
     
     // VARIABLES from the query
     const ref = req.query.URL
-    const quality = req.query.q
+    const q = req.query.q
+    const quality = parseInt(q)
 
-    if (quality === 137) {
+    if (quality === 137 || quality === 400 || quality === 401) {
       
       const info = await ytdl.getInfo(ref)
       const title = info.player_response.videoDetails.title
-  
+       
+      // console.log(title)
+      // res.send(info)
       const tracker = {
         start: Date.now(),
         audio: { downloaded: 0, total: Infinity },
@@ -71,7 +74,8 @@ const highqualityController = async (req, res) => {
         // Keep encoding
         '-c:v', 'copy',
         // Define output file
-        `${process.cwd()}/output/${title}.mkv`,
+        // `${process.cwd()}/output/${title}.mkv`,
+        title + '.mp4'
       ], {
         windowsHide: true,
         stdio: [
@@ -87,7 +91,11 @@ const highqualityController = async (req, res) => {
         process.stdout.write('\n\n\n\n');
         clearInterval(progressbarHandle);
   
-        res.download(`${process.cwd()}/output/${title}.mkv`)
+        res.download(title + '.mp4', (err) => {
+          if (err) throw err
+
+          fs.unlinkSync(title + '.mp4')
+        })
       });
       
       // Link streams
@@ -106,10 +114,14 @@ const highqualityController = async (req, res) => {
       });
       audio.pipe(ffmpegProcess.stdio[4]);
       video.pipe(ffmpegProcess.stdio[5]);
+
+      
     } else {
-     await ytdl(ref, {
+     ytdl(ref, {
         format: quality
       }).pipe(res)
+
+      console.log("Downloading the low qulaity: " + quality)
     }
 }
 

@@ -1,9 +1,6 @@
 const ytdl = require('ytdl-core');
 const fs = require('fs');
 const path = require('path');
-const http = require('http').createServer()
-
-const io = require('socket.io')(http)
 
 const index = (req, res) => {
     res.render('index', {title: "Video Downloader"})
@@ -42,9 +39,6 @@ const downloadVideo = async (req, res) => {
         let timeRun = "Running for: " + downloadedMinutes.toFixed(2) + "minutes";
         let extimatedTime = "Extimated time left: " + estimatedDownloadTime.toFixed(2) + "minutes"
     
-        io.on('connection', (socket) => {
-            socket.emmit('data-downloading', {perDownloaded, dowVid, timeRun, extimatedTime})
-        })
     });
 
     video.on('end', () => [
