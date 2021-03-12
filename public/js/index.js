@@ -30,12 +30,12 @@ function getSelectedExtension(extension) {
 submitBtn.addEventListener('click', () => {
     const URLValue = URLInput.value;
     const opt = getSelectedOption(quality);
-    const ext = getSelectedExtension(extension);
+    // const ext = getSelectedExtension(extension);
    
 
-    send(URLValue, opt.value, ext.value)
+    send(URLValue, opt.value)
 })
 
-function send(URL, quality, extension) {
-  window.location.href = `/download/video?URL=${URL}&q=${quality}&ext=${extension}`
+function send(URL, quality) {
+  window.location.href = `/download/video?URL=${URL}&q=${quality}`
 }
