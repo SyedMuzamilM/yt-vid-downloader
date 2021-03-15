@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><% title %> | smvid</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= typeof title != 'undefined' ? title : 'Index' %> | smvid</title>
 
     <!-- <link rel="stylesheet" href="/static/stylesheets/style.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css"
@@ -15,7 +15,6 @@
 
 <body>
     <main class="min-h-screen flex items-center px-6 lg:px-32 bg-purple-700 text-white relative">
-
         <header class="w-full absolute left-0 top-0 p-6 lg:p-32">
             <div class="flex justify-between">
                 <div>
@@ -68,3 +67,7 @@
                 </div>
             </div>
         </header>
+    </main>
+</body>
+
+</html>

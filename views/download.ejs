@@ -14,10 +14,18 @@
     <select name="quality" id="quality"
         class="dropdown inline-block relative bg-gray-300 text-gray-800 px-4 py-2 font-semibold items-center">
 
-        <option value="134">360p</option>
-        <option value="135">480p</option>
-        <option value="136">720p</option>
-        <option value="137">1080p</option>
+        <option value="18">360p</option>
+        <!-- For 360p itag 18 is the best quality but i will be using 243 if 18 does not work-->
+        <option value="244">480p</option>
+        <!-- For 480p we have three itags 244(webm), 135(mp4) high quality and 134(mp4) low quality -->
+        <option value="247">720p</option> <!-- For 720p we have two itags 247(webm) and 136(mp4)-->
+        <option value="137">1080p</option> <!-- For 1080p we have two itags 248(webm) and 137(mp4) -->
+        <!--
+            TODO: We are going to fetch the qualities from the video url and then we we provide the dropdown to select the video quality the user wants to download
+
+            TODO: We are going to create an algorith and api to collect and fetch all the qualities with their itags
+         -->
+
     </select>
 
     <!-- This is for the extension of the video-->
