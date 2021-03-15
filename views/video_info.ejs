@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css"
+    integrity="sha512-wl80ucxCRpLkfaCnbM88y4AxnutbGk327762eM9E/rRTvY/ZGAHWMZrYUq66VQBYMIYDFpDdJAOGSLyIPHZ2IQ=="
+    crossorigin="anonymous" />
+
+<div class="flex justify-center items-center">
+    <div class="flex flex-col justify-center items-center mt-10 w-1/2 py-6 px-4 shadow-md">
+        <img class="h-80 mb-4" id="image" src="<%= thumbnail_url %> " alt="<%= vid_id %>" />
+        <h1 class="text-center font-bold mb-4 w-4/5"><%= title %></h1>
+
+        <select name="quality" id="quality" class="bg-gray-500 px-4 py-2 mb-4 text-white font-bold">
+            <% qualities_client_want.forEach(quality => { %>
+            <option value="<%= quality.format_id %> ">
+                <%= quality.quality_label %> - <%= quality.ext %> | <%= quality.filesize
+        %>MB
+            </option>
+            <% }) %>
+        </select>
+
+        <button class="px-3 py-2 bg-red-700 hover:bg-red-600 w-4/5 font-bold text-white" id="submit">
+            Download
+        </button>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/send_vid_details.js"></script>
