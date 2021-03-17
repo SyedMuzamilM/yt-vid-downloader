@@ -10,8 +10,8 @@ app.set("view engine", "ejs");
 app.use("/static", express.static(path.join(__dirname, "public")));
 
 app.use(cors());
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 /**
  * Import the routes
@@ -31,4 +31,13 @@ app.use("/download", downloadRouter);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`App listning on PORT ${PORT}`));
 
+app.use((err, req, res, next) => {
+  err.statusCode = err.statusCode || 500;
+  err.status = err.status || "error";
+
+  res.status(err.statusCode).json({
+    status: err.status,
+    message: err.message,
+  });
+});
 module.exports = app;
