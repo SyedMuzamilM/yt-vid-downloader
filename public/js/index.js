@@ -34,8 +34,9 @@ submitBtn.addEventListener('click', () => {
    
 
     send(URLValue, opt.value)
+    URLValue.value = '';
 })
 
 function send(URL, quality) {
-  window.location.href = `/download/video?URL=${URL}&q=${quality}`
+  window.location.href = `/download/search/video?URL=${URL}`
 }

@@ -1,7 +1,12 @@
 const quality = document.querySelector('#quality');
 const submitBtn = document.querySelector('#submit');
+const t = document.querySelector('#title').innerText;
 
 const id = document.querySelector('#image').getAttribute('alt');
+
+// const title = t.replace('/\s/g ', '-')
+const title = t.split(' ').join('_')
+
 
 function getSelectedQuality(quality) {
     let output;
@@ -18,10 +23,10 @@ function getSelectedQuality(quality) {
 submitBtn.addEventListener('click', () => {
     const vid_id = id;
     const q = getSelectedQuality(quality).value
-
-    send(vid_id, q);
+    // console.log(title)
+    send(vid_id, q, title);
 })
 
-function send(vid_id, q) {
-    window.location.href = `/download/video?id=${vid_id}&q=${q}`
+function send(vid_id, q, title) {
+    window.location.href = `/download/video?id=${vid_id}&q=${q}&title=${title}`
 }
